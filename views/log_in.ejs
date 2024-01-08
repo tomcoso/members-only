@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('header', {title: title}) %>
+    <main>
+      <form action="/member/log-in" method="post">
+        <div>
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <ul>
+          <% if (error) { %>
+          <li><%= error %></li>
+          <% } %>
+        </ul>
+        <button type="submit">Log In</button>
+      </form>
+    </main>
+  </body>
+</html>

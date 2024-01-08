@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('header', {title: title}) %>
+    <main>
+      <div>
+        <% if (messages) { messages.forEach(message => { %>
+        <div class="msg-container">
+          <div class="msg-header">
+            <h5><%= message.title %></h5>
+            <p><%= message.author ? 'From: '+message.author.username : '' %></p>
+            <p><%= message.timestamp_display %></p>
+          </div>
+          <p class="msg-content"><%= message.message %></p>
+          <% if (currentMember && currentMember.membership_status.access === 2)
+          { %>
+          <form action="/delete" method="post">
+            <input type="hidden" name="messageid" value="<%= message._id %>" />
+            <button>Delete</button>
+          </form>
+          <% } %>
+        </div>
+        <% })} else { %>
+        <div>
+          <p>No Messages.</p>
+        </div>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

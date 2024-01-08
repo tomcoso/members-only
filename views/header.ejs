@@ -1,0 +1,22 @@
+<header>
+  <h1><%= title %></h1>
+  <div>
+    <span
+      ><strong
+        ><%= currentMember ? currentMember.username + ' : '+
+        currentMember.membership_status.name : '' %></strong
+      ></span
+    >
+    <nav>
+      <a href="/">Message board</a>
+      <% if (currentMember) { %>
+      <a href="/member/log-out">Log out</a>
+      <a href="/create">Create Message</a>
+      <a href="/member/verify">Verify</a>
+      <% } else { %>
+      <a href="/member/sign-up">Sign up</a>
+      <a href="/member/log-in">Log in</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
